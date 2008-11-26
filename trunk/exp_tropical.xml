@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+<ModulePrefs title="Graphical Tropical Weather Outlook" 
+      height="335" 
+      width="330"
+      scaling="true"
+      scrolling="true"
+      author="Ken Ward"
+      thumbnail="http://kenrward.googlepages.com/two_atl_thumb.png"
+      screenshot="http://kenrward.googlepages.com/Screenshot-iGoogle.png" 
+      description="The graphical Tropical Weather Outlook (TWO) is an experimental graphic that the National Hurricane Center (NHC) is testing and evaluating during
+the 2008 hurricane season. This experimental product is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT"
+     author_email="kward652@gmail.com"  />
+<UserPref name="Basin" 
+     display_name="Select Basin"
+     datatype="enum"
+     default_value="atl">
+  <EnumValue value="atl" display_value="Atlantic"/>
+  <EnumValue value="epac" display_value="East Pacific"/>
+</UserPref>
+<UserPref name="Width" 
+     display_name="Select Size"
+     datatype="enum"
+     default_value="320">
+  <EnumValue value="250" display_value="Small"/>
+  <EnumValue value="320" display_value="Medium"/>
+  <EnumValue value="500" display_value="Large"/>
+</UserPref>
+
+<UserPref name="show_date" display_name="Show Dates?" datatype="bool" default_value="false"/>
+<UserPref name="num_entries" display_name="Number of Entries:" default_value="5"/>
+<UserPref name="show_summ" display_name="Show Summaries?" datatype="bool" default_value="false"/>
+<Content type="html" view="home">
+<![CDATA[
+<script type="text/javascript">
+  var html = '<div align="center"><a href="http://www.nhc.noaa.gov/gtwo___UP_Basin__.shtml" target="_blank"><img src="http://www.nhc.noaa.gov/gtwo/two___UP_Basin__.gif" border="0" width="__UP_Width__"  /></a></div>';
+  document.writeln(html);
+</script>
+
+]]></Content>
+<Content type="html" view="canvas">
+<![CDATA[
+  <h2>Graphical Tropical Weather Outlook</h2>
+  <div id="content_div"></div>
+  <script type="text/javascript">
+      function makeDOMRequest() {    
+        var params = {};  
+        params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;  
+        var url = "http://gadget-doc-examples.googlecode.com/svn/trunk/opensocial-gadgets/breakfast-data.xml";  
+        gadgets.io.makeRequest(url, response, params);
+      };
+      function response(obj) { 
+        // Start building HTML string that will be displayed in <div>.           
+        // Set the style for the <div>.        
+        var html = "<div style='padding: 5px;background-color: #ccf;font-family:Arial, Helvetica;" 
+          + "text-align:left;font-size:90%'>";   
+        // Set style for title.
+        html +="<div style='text-align:center; font-size: 120%; color: yellow; " 
+          + "font-weight: 700;'>"; 
+        // obj.data contains a Document DOM element corresponding to the
+        // page that was requested
+        var domdata = obj.data;
+
+        var title = domdata.getElementsByTagName("menu").item(0).getAttribute("title");
+
+        html += title + "</div><br>"; 
+        
+      html += "dd</div>";
+      document.getElementById('content_div').innerHTML = html;
+    };
+    gadgets.util.registerOnLoadHandler(makeDOMRequest);
+    </script>
+  
+  ]]>
+  </Content>
+</Module>
