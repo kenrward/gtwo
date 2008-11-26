@@ -42,33 +42,18 @@ the 2008 hurricane season. This experimental product is updated at approximately
 <![CDATA[
   <h2>Graphical Tropical Weather Outlook</h2>
   <div id="content_div"></div>
-  <script type="text/javascript">
-      function makeDOMRequest() {    
-        var params = {};  
-        params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.DOM;  
-        var url = "http://gadget-doc-examples.googlecode.com/svn/trunk/opensocial-gadgets/breakfast-data.xml";  
-        gadgets.io.makeRequest(url, response, params);
-      };
-      function response(obj) { 
-        // Start building HTML string that will be displayed in <div>.           
-        // Set the style for the <div>.        
-        var html = "<div style='padding: 5px;background-color: #ccf;font-family:Arial, Helvetica;" 
-          + "text-align:left;font-size:90%'>";   
-        // Set style for title.
-        html +="<div style='text-align:center; font-size: 120%; color: yellow; " 
-          + "font-weight: 700;'>"; 
-        // obj.data contains a Document DOM element corresponding to the
-        // page that was requested
-        var domdata = obj.data;
-
-        var title = domdata.getElementsByTagName("menu").item(0).getAttribute("title");
-
-        html += title + "</div><br>"; 
-        
-      html += "dd</div>";
-      document.getElementById('content_div').innerHTML = html;
-    };
-    gadgets.util.registerOnLoadHandler(makeDOMRequest);
+  <script type="text/javascript"> 
+	  function request() {  
+		  var params = {};
+		  params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;
+		  var url = "http://gadget-doc-examples.googlecode.com/svn/trunk/opensocial-gadgets/breakfast-data.xml";
+		  gadgets.io.makeRequest(url, response, params);
+		};
+      function response(obj) {
+		  /** obj.data contains an object corresponding with the JSON-encoded response **/
+		  output(obj.data);
+		};
+		request();
     </script>
   
   ]]>
