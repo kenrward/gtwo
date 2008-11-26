@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Module>
-<ModulePrefs title="Graphical Tropical Weather Outlook" 
+<ModulePrefs title="!!DEV!! Graphical Tropical Weather Outlook" 
       height="335" 
       width="330"
       scaling="true"
@@ -46,7 +46,7 @@ the 2008 hurricane season. This experimental product is updated at approximately
 	  function request() {  
 		  var params = {};
 		  params[gadgets.io.RequestParameters.CONTENT_TYPE] = gadgets.io.ContentType.FEED;
-		  var url = "http://gadget-doc-examples.googlecode.com/svn/trunk/opensocial-gadgets/breakfast-data.xml";
+		  var url = "http://www.nhc.noaa.gov/gtwo.xml";
 		  gadgets.io.makeRequest(url, response, params);
 		};
       function response(obj) {
