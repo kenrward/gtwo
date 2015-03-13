@@ -1,0 +1,1 @@
+The graphical Tropical Weather Outlook (TWO) is an experimental graphic that the National Hurricane Center (NHC) is testing and evaluating during the 2008 hurricane season. This experimental product is updated at approximately 2 AM, 8 AM, 2 PM, and 8 PM EDT"
